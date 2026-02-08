@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="UTF-8">
 		<style>
 			form {
 				width: 300px;
@@ -40,5 +41,20 @@
 			<input type="radio" name="visit_form" value="virtual_visit">Виртуальный визит</input><br>
 			<button type="submit">Отправить</button>
 		</form>
+		<div id="result"></div>
+		<script>
+			document.getElementById("DoctorAppointmentForm").addEventListener("submit", function(e)
+			{
+				e.preventDefault();
+				
+				const formData = new FormData(this);
+				let output = "";
+				for (const [name, value] of formData.entries()) {
+					output += `<p><b>${name}:</b> ${value}</p>`;
+				}
+				
+				document.getElementById("result").innerHTML = output;
+			});
+		</script>
 	</body>
 </html>
